@@ -3,38 +3,33 @@
 
 <head>
     <style>
-        h1 {
-            color: #E9A429;
-            text-align: center;
+        body {
+            background-color: #43245c;
         }
 
-        h3,
-        h4 {
+        .header {
+            font-size: 10px;
+            text-align: end;
 
-            font-size: 20px;
-            text-align: center;
-            color: green
         }
-
 
         p {
-            color: green;
+            color: #fff;
             justify-content: baseline;
         }
 
         .beneficios {
-            background-color: #FFF;
             border-radius: 9px;
             padding: 5px;
             width: 40%;
             align-content: center;
-            color: green;
+            color: #fff;
+            background-color: rgb(203, 199, 205, 0.1)
         }
 
         .linha {
             display: flex;
             justify-content: space-between;
-
             margin-top: -28px;
         }
 
@@ -45,45 +40,58 @@
             padding: 3px;
             width: 32%;
             height: 40px;
+            background-color: rgb(203, 199, 205, 0.1);
+
         }
 
-        .dados {
-            background-color: #E9A429;
-            color: green;
-            border-radius: 3px;
-            align-content: center;
+        h4 {
+            margin-top: -10px;
+            font-size: 20px;
+            padding: 15px;
+            text-align: center;
+            color: #fff;
 
         }
 
         .title {
+            text-align: center;
             background-color: #E9A429;
-            color: green;
+            color: #43245c;
             border-radius: 3px;
-            align-content: center;
-            padding: 3px;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .financeiro p {
+        .financeiroContainer p {
+            width: 55%;
+            margin-left: auto;
+            margin-right: auto;
             text-align: center;
-            margin-top: -12px;
-            background-color: #E9A429;
+            margin-top: -10px;
+
             border-radius: 3px;
+            color: #E9A429;
+            background-color: rgb(203, 199, 205, 0.1)
+        }
+
+        .financeiroContainer {
+            margin-top: 15px;
+
         }
     </style>
 </head>
 
 <body>
-    <div style="text-align: end;">
+    <div class="header">
         <p>Consultora: Maria Aurinete Xavier Arruda </br>
             Telefone.:(61) 99623-4698 </br>
-            <b>Proposta válida apenas com o aceite e vistoria da associação</b>
+            Proposta válida apenas com o aceite e vistoria da associação
         </p>
     </div>
-    <h1 class="title">PROPOSTA DE PROTEÇÃO PATRIMONIAL
-        ASSOCIATIVO (SOCORRO MÚTUO)</h1>
-
-    <h4 class="dados">DADOS DO CLIENTE</h4>
-
+    <h3 class="title" style="width: 100%;">PROPOSTA DE PROTEÇÃO PATRIMONIAL
+        ASSOCIATIVO (SOCORRO MÚTUO)</h3>
+    <h3 class="title">DADOS DO CLIENTE</h3>
     <div class="cliente">
         <div class="linha">
             <p>Nome: Emerson Ribeiro da Cunha</p>
@@ -109,9 +117,9 @@
         </div>
     </div>
 
-    <h3 class="dados">BENEFÍCIOS VINCULADOS AO SEU PLANO</h3>
+    <h3 class="title" style="margin-top: 25px;">BENEFÍCIOS VINCULADOS AO SEU PLANO</h3>
 
-    <h3>PLANO MASTER</h3>
+    <h3 style="text-align: center;color:#fff;">✅PLANO MASTER</h3>
     <div style="flex-direction: row; display: flex; justify-content: space-between;">
         <div class="beneficios">
             ▪ Proteção 100% da tabela Fipe<br />▪ Roubo / Furto<br />▪ Colisão<br />▪
@@ -143,17 +151,16 @@
             <p> Renovação anual automática e sem custos:</p>
         </div>
     </div>
-    <div class="financeiro">
-        <p class="title" style="text-align: center;"><b>INFORMAÇÕES FINANCEIRAS</p></b>
+    <div class="financeiroContainer">
+        <p style="background-color: #E9A429; width: 100%; color: #43245c;"><b>INFORMAÇÕES FINANCEIRAS</p></b>
 
-        <p>VALOR MÉDIO
-            MENSALIDADE
-        <p style="background-color: #fff;"><b>R$ 176,00</b></p>
+        <p>VALOR MÉDIO MENSALIDADE</p>
+        <p style="background-color: #43245c;color: #fff;">R$ 176,00</p>
 
         <p>CADASTRO, VISTORIA E ATIVAÇÃO DA
-            PROTEÇÃO
+            PROTEÇÃO</p>
 
-        <p style="background-color: #fff;"> <b>R$350,00</b></p>
+        <p style="background-color: #43245c;color: #fff;">R$350,00</p>
     </div>
     </div>
 </body>

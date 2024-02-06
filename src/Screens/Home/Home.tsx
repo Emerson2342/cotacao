@@ -150,7 +150,7 @@ export default function Home() {
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, Placa: text }))}
               />
               <TextInput
-                style={[styles.input, { width: "30%" }]}
+                style={[styles.input, { width: "32%" }]}
                 placeholder="Código FIPE"
                 value={novoCliente['Código FIPE']}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Código FIPE": text }))}

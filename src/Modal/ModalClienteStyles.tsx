@@ -3,22 +3,23 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "rgba(24,24,24,0.9)",
+        backgroundColor: "rgba(24,24,24,0.8)",
         paddingTop: 100,
         alignItems: "center"
     },
     context: {
-        backgroundColor: "#43245c",
+        backgroundColor: "#cbc7cd",
         width: "95%",
-        padding: 15,
+        padding: 10,
         borderRadius: 9,
-        borderWidth: 1,
+        // borderWidth: 1,
         borderColor: "#e9a429"
     },
     text: {
         fontSize: 20,
-        color: "#fff",
-        marginVertical: 3
+        color: "#000",
+        marginVertical: 3,
+
     },
     buttonContainer: {
         top: 20,
@@ -37,7 +38,8 @@ export const styles = StyleSheet.create({
         backgroundColor: "#e9a429",
         borderRadius: 9,
         justifyContent: "center",
-        width: "94%"
+        width: "94%",
+
     },
     button2: {
         height: 50,
@@ -45,7 +47,8 @@ export const styles = StyleSheet.create({
         backgroundColor: "#e9a429",
         borderRadius: 9,
         justifyContent: "center",
-        width: "48%"
+        width: "48%",
+
     },
     textButton: {
         fontSize: 20,
