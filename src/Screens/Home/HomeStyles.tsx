@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     textAlign: "center",
   },
   button: {
-    marginTop: 15,
+    marginTop: 150,
     padding: 5,
     alignSelf: "center",
     backgroundColor: "#e9a429",
@@ -33,14 +33,14 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     height: 45,
     borderRadius: 9,
-    marginVertical: 3,
+    marginVertical: 5,
     backgroundColor: "#fff",
 
   },
   inputContainer: {
     width: "90%",
     alignSelf: "center",
-    //paddingTop: 20,
+    paddingTop: 50,
 
   },
   textButton: {

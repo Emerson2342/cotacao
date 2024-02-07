@@ -107,13 +107,13 @@ export default function Home() {
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
 
               <TextInput
-                style={[styles.input, { width: "58%" }]}
+                style={[styles.input, { width: "65%" }]}
                 placeholder="Modelo"
                 value={novoCliente.Modelo}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, Modelo: text }))}
               />
               <TextInput
-                style={[styles.input, { width: "40%" }]}
+                style={[styles.input, { width: "33%" }]}
                 placeholder="Ano Modelo"
                 value={novoCliente['Ano modelo']}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Ano modelo": text }))}
@@ -121,39 +121,43 @@ export default function Home() {
             </View>
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
               <TextInput
-                style={[styles.input, { width: "30%" }]}
+                style={[styles.input, { width: "49%" }]}
                 placeholder="Placa"
                 value={novoCliente.Placa}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, Placa: text }))}
               />
               <TextInput
-                style={[styles.input, { width: "32%" }]}
+                style={[styles.input, { width: "49%" }]}
                 placeholder="Código FIPE"
                 value={novoCliente['Código FIPE']}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Código FIPE": text }))}
               />
+            </View>
+            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
               <TextInput
-                style={[styles.input, { width: "35%" }]}
+                style={[styles.input, { width: "49%" }]}
                 placeholder="Parcela"
                 value={novoCliente.Parcela ? `R$ ${novoCliente.Parcela}` : ''}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Parcela": text.replace('R$ ', '') }))}
               />
-            </View>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+
+
               <TextInput
-                style={[styles.input, { width: "30%" }]}
+                style={[styles.input, { width: "49%" }]}
                 placeholder="Vistoria"
                 value={novoCliente.Vistoria ? `R$ ${novoCliente.Vistoria}` : ''}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Vistoria": text.replace('R$ ', '') }))}
               />
+            </View>
+            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
               <TextInput
-                style={[styles.input, { width: "35%" }, { fontSize: 15 }]}
+                style={[styles.input, { width: "49%" }]}
                 placeholder="Valor Protegido"
                 value={novoCliente['Valor Protegido'] ? `R$ ${novoCliente['Valor Protegido']}` : ''}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Valor Protegido": text.replace('R$ ', '') }))}
 
               />
-              <View style={styles.drop} >
+              <View style={[styles.drop, { width: '49%' }]} >
                 <Picker
                   selectedValue={novoCliente['Ajuda Participativa']}
                   onValueChange={(itemValue, itemIndex) =>

@@ -41,7 +41,7 @@ export function Cotacoes() {
                 </View>
 
                 <View style={{ width: "100%" }} >
-                    <Text style={{ width: "35%" }}>Telefone:</Text><Text style={styles.text}>{item.Telefone}</Text>
+                    <Text style={{ width: "35%", textAlign: "center" }}>Telefone:</Text><Text style={[styles.text, { textAlign: "center", width: "33%" }]}>{item.Telefone}</Text>
                 </View>
             </TouchableOpacity>
         );
