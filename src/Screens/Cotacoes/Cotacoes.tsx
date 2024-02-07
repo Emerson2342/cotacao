@@ -33,8 +33,7 @@ export function Cotacoes() {
                 <View style={{ width: "60%" }}>
                     <View style={{ flexDirection: "row" }}>
                         <Text style={{ width: "20%" }}
-                        >Nome:</Text><Text numberOfLines={1} ellipsizeMode="tail" style={styles.text}
-                        > {item.Nome} </Text>
+                        >Nome:</Text><Text numberOfLines={1} ellipsizeMode="tail" style={styles.text}> {item.Nome} </Text>
                     </View>
                     <View style={{ flexDirection: "row" }}>
                         <Text style={{ width: "30%" }}>Telefone: </Text><Text style={styles.text}>{item.Telefone}</Text>

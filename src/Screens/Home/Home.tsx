@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Modal, ScrollView } from 'react-native';
+import { Picker } from '@react-native-picker/picker'
 import { useClientesContext } from '../../Context/useClienteContext';
 import { ModalSalvo } from '../../Modal/ModalSalvo';
 import { ModalCheck } from '../../Modal/ModalCheck';
@@ -24,6 +25,7 @@ export default function Home() {
   const [modalSalvoVisible, setModalSalvoVisible] = useState(false);
   const [modalCheckVisible, setModalCheckVisible] = useState(false);
   const [valor, setValor] = useState<string>('');
+  const [valueCota, setValueCota] = useState<string>('');
 
   const [novoCliente, setNovoCliente] = useState({
     Nome: '',
@@ -35,7 +37,7 @@ export default function Home() {
     'Código FIPE': '',
     Parcela: '',
     Vistoria: '',
-    Franquia: '',
+    'Ajuda Participativa': '',
     'Valor Protegido': '',
   });
 
@@ -47,7 +49,9 @@ export default function Home() {
       novoCliente['Ano modelo'] === '' ||
       novoCliente.Placa === '' ||
       novoCliente['Código FIPE'] === '' ||
-      novoCliente['Valor Protegido'] === '') {
+      novoCliente['Valor Protegido'] === ''
+      // novoCliente['Ajuda Participativa'] === ''
+    ) {
       setModalCheckVisible(true)
     } else {
       setClientes((prevClientes) => [
@@ -65,39 +69,12 @@ export default function Home() {
         'Código FIPE': '',
         Parcela: '',
         Vistoria: '',
-        Franquia: '',
+        'Ajuda Participativa': '',
         'Valor Protegido': '',
       });
       setModalSalvoVisible(true)
     }
   };
-
-  const formatarNumero = (text: string) => {
-    // Remover todos os caracteres não numéricos
-    const numeroLimpo = text.replace(/[^0-9]/g, '');
-
-    // Se o número estiver vazio, definir como vazio
-    if (!numeroLimpo) {
-      setValor('');
-      return;
-    }
-
-    // Formatando o número
-    const partes = numeroLimpo.match(/(\d{1,3})/g);
-
-    // Verificar se partes é nulo
-    if (!partes) {
-      setValor('');
-      return;
-    }
-
-    // Juntar as partes
-    const formatado = partes.join('.');
-
-    // Definir o valor formatado no estado
-    setValor(formatado);
-  };
-
 
 
 
@@ -170,21 +147,34 @@ export default function Home() {
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Vistoria": text.replace('R$ ', '') }))}
               />
               <TextInput
-                style={[styles.input, { width: "30%" }]}
-                placeholder="Franquia"
-                value={novoCliente.Franquia ? `R$ ${novoCliente.Franquia}` : ''}
-                onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Franquia": text.replace('R$ ', '') }))}
-              />
-              <TextInput
-                style={[styles.input, { width: "38%" }]}
+                style={[styles.input, { width: "35%" }]}
                 placeholder="Valor Protegido"
                 value={novoCliente['Valor Protegido'] ? `R$ ${novoCliente['Valor Protegido']}` : ''}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Valor Protegido": text.replace('R$ ', '') }))}
 
-              /></View>
+              />
+              <View style={styles.drop} >
+                <Picker
+                  selectedValue={novoCliente['Ajuda Participativa']}
+                  onValueChange={(itemValue, itemIndex) =>
+                    setNovoCliente((prevState) => ({
+                      ...prevState,
+                      'Ajuda Participativa': itemValue,
+                    }))
+                  }
+                >
+                  <Picker.Item style={{ color: "grey", textAlign: "center" }} label="% COTA PARTICIPATIVA" value="opcao1" />
+                  <Picker.Item style={styles.fontDrop} label="5%" value="5%" />
+                  <Picker.Item style={styles.fontDrop} label="7,5%" value="7,5%" />
+                  <Picker.Item style={styles.fontDrop} label="10%" value="10%" />
+                </Picker>
+              </View>
+            </View>
 
 
           </View>
+
+
           <Modal
             visible={modalSalvoVisible}
             transparent={true}

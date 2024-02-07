@@ -25,10 +25,40 @@ export function ModalCliente({ handleClose }: ModalClienteProps) {
         }
 
         .header {
-            font-size: 10px;
-            text-align: end;
+            flex-direction: row;
+            display: flex;
+            align-items: center;
 
         }
+
+    .img{
+       width: 5%;
+        margin-top: 9px;
+       flex-direction: column;
+        display: flex;
+    }
+    .tel{
+        width: 80%;
+        font-size: 17px;
+        color: #fff;
+        text-align: left;       
+        line-height: 4px; 
+           
+    }
+    .tel p{
+              line-height: 7px;
+        text-align: left;
+       
+    }
+    .headerTitle{
+        width: 100%;
+        font-size: 25px;
+    }
+
+    .iconSolid{
+    width: 100%;
+     }
+
 
         p {
             color: #fff;
@@ -96,42 +126,67 @@ export function ModalCliente({ handleClose }: ModalClienteProps) {
             margin-top: 15px;
 
         }
+        .finanContent{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            
+        }
+        .fin1{
+            font-weight: bold;
+            width: 50%;
+            white-space: nowrap;
+        }
+     
     </style>
 </head>
 
 <body>
+    <div class="headerTitle">    
+        <p style="text-align: center;"><b>Proposta válida por 48 horas</b></p>
+     </div>
     <div class="header">
-        <p>Consultora: Maria Aurinete Xavier Arruda </br>
-            Telefone.:(61) 99623-4698 </br>
-            Proposta válida apenas com o aceite e vistoria da associação
-        </p>
+        <div style="flex-direction: row;display: flex;justify-content: space-between; width: 70%;">
+            <div style="width: 15%;">           
+                <img src="../../assets/mariaIcon.jpg" alt="icone" class="image" style="width: 80px;margin-left: 20px;margin-top: -5px;">
+            </div>
+            <div class="img" style="margin-left: 20px;">
+                <img src="../../assets/whats.png" alt="WhatsIcon" style="width: 23px;object-fit: contain;" >
+                <img src="../../assets/whats.png" alt="WhatsIcon" style="width: 23px;object-fit: contain;margin-top: 5px;"  >
+            </div>
+            <div class="tel">
+                <p> (61) 99623-4698 </p>
+                <p>  protecaoveicular.mariaxavier</p>
+            </div>
+        </div>
+        <div style="width: 10%;">
+            <div class="iconSolid">
+                <img src="../../assets/solidyIcon.jpg" alt="icone" style="object-fit: contain;width: 200px;height: 90px;" >
+            </div>
+        </div>
     </div>
+
+
     <h3 class="title" style="width: 100%;">PROPOSTA DE PROTEÇÃO PATRIMONIAL
         ASSOCIATIVO (SOCORRO MÚTUO)</h3>
     <h3 class="title">DADOS DO CLIENTE</h3>
     <div class="cliente">
         <div class="linha">
-            <p>Nome: ${clienteSelecionado?.Nome}</p>
-            <p>Telefone: ${clienteSelecionado?.Telefone}</p>
-            <p> Email: </p>
+            <p style="width: 66%;">Nome: Emerson Ribeiro da Cunha</p>
+            <p>Telefone: (61) 99835.4398</p>
+           
         </div>
         <div class="linha">
-            <p>Marca: ${clienteSelecionado?.Marca}</p>
-            <p>Modelo: ${clienteSelecionado?.Modelo}</p>
-            <p>Placa: ${clienteSelecionado?.Placa}</p>
+            <p >Marca: vw - Wolksvagen</p>
+            <p>Modelo: VOYAGE I MOTION 1.6 Mi Total Flex 8V</p>
+            <p>Placa: JGG-0908</p>
         </div>
-        <div class="linha">
-            <p>Ano Modelo: ${clienteSelecionado?.['Ano modelo']}</p>
-            <p>Código FIPE: ${clienteSelecionado?.['Código FIPE']}</p>
-            <p>Categoria: Nacional Popular</p>
-        </div>
-        <div class="linha">
-            <p>Valor Protegido: ${clienteSelecionado?.['Valor Protegido']}</p>
-            <p>Ajuda Participativa: 5% não sendo inferior a R$1.200,00</p>
-        </div>
-        <div class="linha">
-
-        </div>
+        <div class="linha" >
+            <p>Ano Modelo: 2013</p>
+            <p>Código FIPE: 993355-3</p>
+            <p style="background-color: #43245c;"></p>
+         </div>
+ 
     </div>
 
     <h3 class="title" style="margin-top: 25px;">BENEFÍCIOS VINCULADOS AO SEU PLANO</h3>
@@ -170,14 +225,24 @@ export function ModalCliente({ handleClose }: ModalClienteProps) {
     </div>
     <div class="financeiroContainer">
         <p style="background-color: #E9A429; width: 100%; color: #43245c;"><b>INFORMAÇÕES FINANCEIRAS</p></b>
-
-        <p>VALOR MÉDIO MENSALIDADE</p>
+<div class="finanContent">
+    <div class="fin1">
+        <p>VALOR PROTEGIDO</p>
         <p style="background-color: #43245c;color: #fff;">R$ 176,00</p>
 
-        <p>CADASTRO, VISTORIA E ATIVAÇÃO DA
-            PROTEÇÃO</p>
+        <p>AJUDA PARTICIPATIVA</p>
 
         <p style="background-color: #43245c;color: #fff;">R$350,00</p>
+    </div>
+    <div class="fin1">
+        <p>VALOR MÉDIO MENSAL</p>
+        <p style="background-color: #43245c;color: #fff;">R$ 176,00</p>
+
+        <p>ATIVAÇÃO DA PROTEÇÃO</p>
+
+        <p style="background-color: #43245c;color: #fff;">R$350,00</p>
+    </div>
+    </div>
     </div>
     </div>
 </body>
@@ -221,7 +286,7 @@ export function ModalCliente({ handleClose }: ModalClienteProps) {
                     <Text style={styles.text}>Placa: {clienteSelecionado.Placa}</Text>
                     <Text style={styles.text}>Parcela: R$ {clienteSelecionado.Parcela}</Text>
                     <Text style={styles.text}>Vistoria: R${clienteSelecionado.Vistoria}</Text>
-                    <Text style={styles.text}>Franquia: R${clienteSelecionado.Franquia}</Text>
+                    <Text style={styles.text}>Cota Participativa: {clienteSelecionado['Ajuda Participativa']}</Text>
                     <Text style={styles.text}>Valor: R$ {clienteSelecionado['Valor Protegido']}</Text>
                 </View>
 

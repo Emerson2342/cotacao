@@ -137,7 +137,7 @@ interface Cliente {
   'Código FIPE'?: string,
   Parcela?: string,
   Vistoria?: string,
-  Franquia?: string,
+  'Ajuda Participativa'?: string,
   'Valor Protegido'?: string,
 }
 
