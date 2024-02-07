@@ -49,8 +49,8 @@ export default function Home() {
       novoCliente['Ano modelo'] === '' ||
       novoCliente.Placa === '' ||
       novoCliente['Código FIPE'] === '' ||
-      novoCliente['Valor Protegido'] === ''
-      // novoCliente['Ajuda Participativa'] === ''
+      novoCliente['Valor Protegido'] === '' ||
+      novoCliente['Ajuda Participativa'] === ''
     ) {
       setModalCheckVisible(true)
     } else {
@@ -89,7 +89,7 @@ export default function Home() {
               style={styles.input}
               placeholder="Nome"
               value={novoCliente.Nome}
-              onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, Nome: text.toUpperCase() }))}
+              onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, Nome: text }))}
             />
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
               <TextInput
@@ -147,7 +147,7 @@ export default function Home() {
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Vistoria": text.replace('R$ ', '') }))}
               />
               <TextInput
-                style={[styles.input, { width: "35%" }]}
+                style={[styles.input, { width: "35%" }, { fontSize: 15 }]}
                 placeholder="Valor Protegido"
                 value={novoCliente['Valor Protegido'] ? `R$ ${novoCliente['Valor Protegido']}` : ''}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Valor Protegido": text.replace('R$ ', '') }))}
@@ -163,7 +163,7 @@ export default function Home() {
                     }))
                   }
                 >
-                  <Picker.Item style={{ color: "grey", textAlign: "center" }} label="% COTA PARTICIPATIVA" value="opcao1" />
+                  <Picker.Item style={{ color: "grey", textAlign: "center" }} label="% AJUDA PARTICIPATIVA" value="opcao1" />
                   <Picker.Item style={styles.fontDrop} label="5%" value="5%" />
                   <Picker.Item style={styles.fontDrop} label="7,5%" value="7,5%" />
                   <Picker.Item style={styles.fontDrop} label="10%" value="10%" />
