@@ -4,7 +4,6 @@ import * as Print from 'expo-print';
 import * as Sharing from "expo-sharing";
 import * as FileSystem from 'expo-file-system';
 
-
 import { styles } from './ModalSalvoStyles';
 import { useClientesContext } from '../Context/useClienteContext';
 
@@ -13,12 +12,9 @@ interface ModalSalvoProps {
     handleClose: () => void;
 }
 
-
 export function ModalSalvo({ handleClose }: ModalSalvoProps) {
 
-    const { ultimoCliente, clienteSelecionado } = useClientesContext();
-
-
+    const { ultimoCliente } = useClientesContext();
 
     const handleWhatsAppPress = () => {
         // Número de telefone para o qual você deseja enviar a mensagem no formato internacional
@@ -30,7 +26,6 @@ export function ModalSalvo({ handleClose }: ModalSalvoProps) {
 
 
     const ClienteHTML = () => {
-
 
         return `
       <!DOCTYPE html>
@@ -221,6 +216,7 @@ export function ModalSalvo({ handleClose }: ModalSalvoProps) {
                       de carro reserva<br />▪60% de proteção para todos os vidros,
                       faróis, lanternas e retrovisores <br /> para Veículos Nacionais e Importados<br />▪Futura Assistência
                       Familiar - Titular<br />
+                      ▪Cobertura para terceiros de R$ ${ultimoCliente?.['Cobertura Terceiros']}<br />
                   </div>
                   <div class="beneficios">
                       ▪Amigo Médico - Titular</br>

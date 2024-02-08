@@ -51,7 +51,6 @@ export const styles = StyleSheet.create({
     color: "#000"
   },
   drop: {
-    width: "33%",
     height: 45,
     alignSelf: "center",
     borderRadius: 9,

@@ -10,7 +10,7 @@ interface Cliente {
     Telefone?: string,
     Modelo?: string,
     Vistoria?: string,
-    "Valor Protegido"?: string
+    "Valor Protegido"?: string,
 }
 
 export function Cotacoes() {
@@ -18,8 +18,6 @@ export function Cotacoes() {
     const { clientes, removerCliente, selecionarCliente } = useClientesContext();
 
     const [modalVisible, setModalVisible] = useState(false);
-
-
 
     const renderItem = ({ item, index }: { item: Cliente; index: number }) => {
         return (
