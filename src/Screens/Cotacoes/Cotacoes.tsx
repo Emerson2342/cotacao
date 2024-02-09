@@ -49,11 +49,13 @@ export function Cotacoes() {
         <View style={styles.container}>
             <Text style={styles.title}>Cotações Salvas</Text>
             <View style={styles.listContainer}>
-                <FlatList
+                {clientes.length > 0 ? (<FlatList
                     data={clientes}
                     renderItem={renderItem}
                     keyExtractor={(item, index) => index.toString()}
-                />
+                />) : (<Text style={styles.textoVazio}>Nenhuma Cotação Salva</Text>)
+                }
+
 
             </View>
 

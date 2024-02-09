@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
     textAlign: "center",
   },
   button: {
-    marginTop: 150,
+    marginTop: 100,
     padding: 5,
     alignSelf: "center",
     backgroundColor: "#e9a429",
