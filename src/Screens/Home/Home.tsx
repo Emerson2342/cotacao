@@ -24,8 +24,8 @@ export default function Home() {
 
   const [modalSalvoVisible, setModalSalvoVisible] = useState(false);
   const [modalCheckVisible, setModalCheckVisible] = useState(false);
-  const [valor, setValor] = useState<string>('');
-  const [valueCota, setValueCota] = useState<string>('');
+  /*   const [valor, setValor] = useState<string>('');
+    const [valueCota, setValueCota] = useState<string>(''); */
 
   const [novoCliente, setNovoCliente] = useState({
     Nome: '',
@@ -39,6 +39,7 @@ export default function Home() {
     Vistoria: '',
     'Ajuda Participativa': '',
     'Valor Protegido': '',
+    'Cobertura Terceiros': ''
   });
 
   const adicionarClientes = () => {
@@ -49,8 +50,9 @@ export default function Home() {
       novoCliente['Ano modelo'] === '' ||
       novoCliente.Placa === '' ||
       novoCliente['Código FIPE'] === '' ||
-      novoCliente['Valor Protegido'] === ''
-      // novoCliente['Ajuda Participativa'] === ''
+      novoCliente['Valor Protegido'] === '' ||
+      novoCliente['Ajuda Participativa'] === '' ||
+      novoCliente['Cobertura Terceiros'] === ''
     ) {
       setModalCheckVisible(true)
     } else {
@@ -71,6 +73,7 @@ export default function Home() {
         Vistoria: '',
         'Ajuda Participativa': '',
         'Valor Protegido': '',
+        'Cobertura Terceiros': ''
       });
       setModalSalvoVisible(true)
     }
@@ -89,7 +92,7 @@ export default function Home() {
               style={styles.input}
               placeholder="Nome"
               value={novoCliente.Nome}
-              onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, Nome: text.toUpperCase() }))}
+              onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, Nome: text }))}
             />
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
               <TextInput
@@ -107,13 +110,13 @@ export default function Home() {
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
 
               <TextInput
-                style={[styles.input, { width: "58%" }]}
+                style={[styles.input, { width: "65%" }]}
                 placeholder="Modelo"
                 value={novoCliente.Modelo}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, Modelo: text }))}
               />
               <TextInput
-                style={[styles.input, { width: "40%" }]}
+                style={[styles.input, { width: "33%" }]}
                 placeholder="Ano Modelo"
                 value={novoCliente['Ano modelo']}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Ano modelo": text }))}
@@ -121,39 +124,43 @@ export default function Home() {
             </View>
             <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
               <TextInput
-                style={[styles.input, { width: "30%" }]}
+                style={[styles.input, { width: "49%" }]}
                 placeholder="Placa"
                 value={novoCliente.Placa}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, Placa: text }))}
               />
               <TextInput
-                style={[styles.input, { width: "32%" }]}
+                style={[styles.input, { width: "49%" }]}
                 placeholder="Código FIPE"
                 value={novoCliente['Código FIPE']}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Código FIPE": text }))}
               />
+            </View>
+            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
               <TextInput
-                style={[styles.input, { width: "35%" }]}
+                style={[styles.input, { width: "49%" }]}
                 placeholder="Parcela"
                 value={novoCliente.Parcela ? `R$ ${novoCliente.Parcela}` : ''}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Parcela": text.replace('R$ ', '') }))}
               />
-            </View>
-            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+
+
               <TextInput
-                style={[styles.input, { width: "30%" }]}
+                style={[styles.input, { width: "49%" }]}
                 placeholder="Vistoria"
                 value={novoCliente.Vistoria ? `R$ ${novoCliente.Vistoria}` : ''}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Vistoria": text.replace('R$ ', '') }))}
               />
+            </View>
+            <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
               <TextInput
-                style={[styles.input, { width: "35%" }]}
+                style={[styles.input, { width: "49%" }]}
                 placeholder="Valor Protegido"
                 value={novoCliente['Valor Protegido'] ? `R$ ${novoCliente['Valor Protegido']}` : ''}
                 onChangeText={(text) => setNovoCliente((prev) => ({ ...prev, "Valor Protegido": text.replace('R$ ', '') }))}
 
               />
-              <View style={styles.drop} >
+              <View style={[styles.drop, { width: '49%' }]} >
                 <Picker
                   selectedValue={novoCliente['Ajuda Participativa']}
                   onValueChange={(itemValue, itemIndex) =>
@@ -163,12 +170,28 @@ export default function Home() {
                     }))
                   }
                 >
-                  <Picker.Item style={{ color: "grey", textAlign: "center" }} label="% COTA PARTICIPATIVA" value="opcao1" />
-                  <Picker.Item style={styles.fontDrop} label="5%" value="5%" />
-                  <Picker.Item style={styles.fontDrop} label="7,5%" value="7,5%" />
-                  <Picker.Item style={styles.fontDrop} label="10%" value="10%" />
+                  <Picker.Item style={{ color: "grey", textAlign: "center" }} label="AJUDA PARTICIPATIVA" value="opcao1" />
+                  <Picker.Item style={styles.fontDrop} label="Ajuda participativa 5%" value="5%" />
+                  <Picker.Item style={styles.fontDrop} label="Ajuda participativa 7,5%" value="7,5%" />
+                  <Picker.Item style={styles.fontDrop} label="Ajuda participativa 10%" value="10%" />
                 </Picker>
               </View>
+            </View>
+            <View style={[styles.drop, { width: '100%', top: 7 }]} >
+              <Picker
+                selectedValue={novoCliente['Cobertura Terceiros']}
+                onValueChange={(itemValue, itemIndex) =>
+                  setNovoCliente((prevState) => ({
+                    ...prevState,
+                    'Cobertura Terceiros': itemValue,
+                  }))
+                }
+              >
+                <Picker.Item style={{ color: "grey", textAlign: "center" }} label="Cobertura para terceiros" value="opcao1" />
+                <Picker.Item style={styles.fontDrop} label="Cobertura para terceiros de R$ 150.00,00" value="150.00,00" />
+                <Picker.Item style={styles.fontDrop} label="Cobertura para terceiros de R$ 200.00,00" value="200.00,00" />
+
+              </Picker>
             </View>
 
 

@@ -10,7 +10,7 @@ interface Cliente {
     Telefone?: string,
     Modelo?: string,
     Vistoria?: string,
-    "Valor Protegido"?: string
+    "Valor Protegido"?: string,
 }
 
 export function Cotacoes() {
@@ -18,8 +18,6 @@ export function Cotacoes() {
     const { clientes, removerCliente, selecionarCliente } = useClientesContext();
 
     const [modalVisible, setModalVisible] = useState(false);
-
-
 
     const renderItem = ({ item, index }: { item: Cliente; index: number }) => {
         return (
@@ -32,20 +30,16 @@ export function Cotacoes() {
                 style={styles.clienteContainer}>
                 <View style={{ width: "60%" }}>
                     <View style={{ flexDirection: "row" }}>
-                        <Text style={{ width: "20%" }}
-                        >Nome:</Text><Text numberOfLines={1} ellipsizeMode="tail" style={styles.text}> {item.Nome} </Text>
+                        <Text style={{ width: "20%" }}>Nome:</Text><Text numberOfLines={1} ellipsizeMode="tail" style={styles.text}> {item.Nome} </Text>
                     </View>
+
                     <View style={{ flexDirection: "row" }}>
-                        <Text style={{ width: "30%" }}>Telefone: </Text><Text style={styles.text}>{item.Telefone}</Text>
+                        <Text style={{ width: "20%" }}>Carro: </Text>< Text style={styles.text}>{item.Modelo}</Text>
                     </View>
                 </View>
-                <View style={{ width: "40%" }}>
-                    <View style={{ flexDirection: "row" }}>
-                        <Text style={{ width: "30%" }}>Carro: </Text>< Text style={styles.text}>{item.Modelo}</Text>
-                    </View>
-                    <View style={{ flexDirection: "row" }}>
-                        <Text style={{ width: "50%" }}>Adesão R$: </Text><Text style={styles.text}>{item.Vistoria}</Text>
-                    </View>
+
+                <View style={{ width: "100%" }} >
+                    <Text style={{ width: "35%", textAlign: "center" }}>Telefone:</Text><Text style={[styles.text, { textAlign: "center", width: "33%" }]}>{item.Telefone}</Text>
                 </View>
             </TouchableOpacity>
         );
@@ -55,11 +49,13 @@ export function Cotacoes() {
         <View style={styles.container}>
             <Text style={styles.title}>Cotações Salvas</Text>
             <View style={styles.listContainer}>
-                <FlatList
+                {clientes.length > 0 ? (<FlatList
                     data={clientes}
                     renderItem={renderItem}
                     keyExtractor={(item, index) => index.toString()}
-                />
+                />) : (<Text style={styles.textoVazio}>Nenhuma Cotação Salva</Text>)
+                }
+
 
             </View>
 

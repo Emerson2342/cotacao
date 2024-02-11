@@ -29,5 +29,12 @@ export const styles = StyleSheet.create({
         borderRadius: 5,
         flexDirection: "row",
         padding: 10
+    },
+    textoVazio: {
+        top: 150,
+        fontSize: 30,
+        fontWeight: "bold",
+        textAlign: 'center',
+        color: "#E9A429",
     }
 });

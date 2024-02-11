@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Propostas",
+    "name": "Cotação",
     "slug": "Propostas",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -19,7 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.jpg",
+        "foregroundImage": "./assets/iconAndroid.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.missinhoo.Propostas"
