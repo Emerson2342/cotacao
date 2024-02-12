@@ -7,16 +7,6 @@ import { ModalCheck } from '../../Modal/ModalCheck';
 
 import { styles } from './HomeStyles';
 
-/* interface Cliente {
-  Nome: string;
-  Telefone: string;
-  Marca: string;
-  Modelo: string;
-  'Ano modelo': string;
-  Placa: string;
-  'Código FIPE': string;
-  'Valor Protegido': string;
-} */
 
 export default function Home() {
   const { clientes, setClientes } = useClientesContext();
@@ -28,8 +18,9 @@ export default function Home() {
 
 
   const dataAtual = new Date();
-  const diaAtual = dataAtual.getDate();
+  const diaAtual = dataAtual.getDate()
   const mesAtual = dataAtual.getMonth() + 1;
+
 
   const [novoCliente, setNovoCliente] = useState({
     Nome: '',
@@ -67,6 +58,7 @@ export default function Home() {
         ...prevClientes,
         { ...novoCliente },
       ]);
+
 
       // Limpar os campos de input após a adição
       setNovoCliente({

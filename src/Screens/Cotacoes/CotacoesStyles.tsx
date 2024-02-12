@@ -26,20 +26,33 @@ export const styles = StyleSheet.create({
         width: "90%",
         alignSelf: "center"
     },
+    buttonContainer: {
+        backgroundColor: "#fff",
+        width: "50%",
+        borderRadius: 5,
+        alignSelf: "center",
+        height: 45,
+        justifyContent: "center",
+    },
+    buttonText: {
+        fontSize: 20,
+        textAlign: "center",
+        fontWeight: "bold",
+    },
     listContainer: {
-        maxHeight: 500,
+        top: 15,
+        maxHeight: 490,
         width: "93%",
         alignSelf: "center"
     },
     text: {
-        width: "80%",
         fontSize: 15,
         fontWeight: "bold"
     },
     clienteContainer: {
         alignItems: "center",
         backgroundColor: "#fff",
-        height: 60,
+        height: 65,
         marginVertical: 8,
         borderRadius: 5,
         flexDirection: "row",

@@ -22,26 +22,13 @@ export const styles = StyleSheet.create({
 
     },
     buttonContainer: {
-        top: 20,
-        width: "100%",
-        alignItems: "center"
-    },
-    buttonContainer2: {
         flexDirection: "row",
         width: "94%",
         justifyContent: "space-between",
-
+        alignSelf: "center"
     },
+
     button: {
-        height: 50,
-        marginVertical: 10,
-        backgroundColor: "#e9a429",
-        borderRadius: 9,
-        justifyContent: "center",
-        width: "94%",
-
-    },
-    button2: {
         height: 50,
         marginVertical: 10,
         backgroundColor: "#e9a429",

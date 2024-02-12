@@ -12,7 +12,7 @@ interface ModalClienteProps {
 }
 
 export function ModalCliente({ handleClose }: ModalClienteProps) {
-    const { clienteSelecionado } = useClientesContext();
+    const { clienteSelecionado, removerCliente } = useClientesContext();
 
     const ClienteHTML = () => {
 
@@ -321,7 +321,8 @@ export function ModalCliente({ handleClose }: ModalClienteProps) {
     };
 
 
-
+    const diaFormatado = String(clienteSelecionado.DiaCadastro).padStart(2, '0');
+    const mesFormatado = String(clienteSelecionado.MesCadastro).padStart(2, '0');
 
 
     return (
@@ -341,14 +342,14 @@ export function ModalCliente({ handleClose }: ModalClienteProps) {
                     <Text style={styles.text}>Valor: R$ {clienteSelecionado['Valor Protegido']}</Text>
                     <Text style={styles.text}>Cobertura Terceiros de R$ {clienteSelecionado['Cobertura Terceiros']}</Text>
                     <Text style={styles.text}>Data da Cotação:
-                        {clienteSelecionado['DiaCadastro']}/{clienteSelecionado['MesCadastro']}/2024</Text>
+                        {diaFormatado}/{mesFormatado}/2024</Text>
                 </View>
 
             </View>
-            <View style={styles.buttonContainer}>
-                <View style={styles.buttonContainer2}>
+            <View style={{ width: "100%" }}>
+                <View style={styles.buttonContainer}>
                     <TouchableOpacity
-                        style={styles.button2}
+                        style={styles.button}
                         onPress={() => {
                             gerarPDF()
                             handleClose()
@@ -357,16 +358,19 @@ export function ModalCliente({ handleClose }: ModalClienteProps) {
                         <Text style={styles.textButton}> Gerar PDF</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        style={styles.button2}
+                        style={styles.button}
                         onPress={() => handleClose()}>
                         <Text style={styles.textButton}> Fechar</Text>
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => handleWhatsAppPress()}>
-                    <Text style={styles.textButton}> Conversar no WhatsApp</Text>
-                </TouchableOpacity>
+                <View style={[styles.buttonContainer]}>
+
+                    <TouchableOpacity
+                        style={[styles.button, { width: "100%" }]}
+                        onPress={() => handleWhatsAppPress()}>
+                        <Text style={styles.textButton}> Enviar Mensagem no WhatsApp</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </View>
     );

@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Modal, SectionList, } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Modal, Alert, } from 'react-native';
 import { useClientesContext } from '../../Context/useClienteContext';
 import { ModalCliente } from '../../Modal/ModalCliente';
 import { Picker } from '@react-native-picker/picker';
 
 import { styles } from './CotacoesStyles';
+import { withSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface Cliente {
     Nome?: string,
@@ -17,15 +18,13 @@ interface Cliente {
     AnoCadastro?: number,
 }
 
-
-
 export function Cotacoes() {
 
     const { clientes, removerCliente, selecionarCliente } = useClientesContext();
 
     const [modalVisible, setModalVisible] = useState(false);
-    const [selectedMonth, setSelectedMonth] = useState(1);
-    const [selectedDay, setSelectedDay] = useState(1);
+    const [selectedMonth, setSelectedMonth] = useState(0);
+    const [selectedDay, setSelectedDay] = useState(0);
     const [clientesFiltrados, setClientesFiltrados] = useState<Cliente[]>((clientes));
 
     const meses = [
@@ -51,52 +50,85 @@ export function Cotacoes() {
     ];
 
 
+
+
     const filtrarClientes = () => {
         if (selectedMonth == 0 && selectedDay == 0) {
-            setClientesFiltrados(clientes);
+            setClientesFiltrados(clientes)
         }
-
-        if (selectedMonth != 0 && selectedDay != 0) {
+        if (selectedMonth != 0 && selectedDay == 0) {
+            const clientesFiltradosMes = clientes.filter(cliente => cliente.MesCadastro == selectedMonth);
+            setClientesFiltrados(clientesFiltradosMes)
+        } if (selectedMonth != 0 && selectedDay != 0) {
             const clientesFiltradosDiaMes = clientes.filter(
                 cliente => cliente.DiaCadastro == selectedDay && cliente.MesCadastro == selectedMonth
             );
             setClientesFiltrados(clientesFiltradosDiaMes);
         }
-
         if (selectedMonth != 0 && selectedDay == 0) {
             const clientesFiltradosMes = clientes.filter(cliente => cliente.MesCadastro == selectedMonth);
             setClientesFiltrados(clientesFiltradosMes);
         }
+        if (selectedMonth == 0 && selectedDay != 0) {
+            Alert.alert("", "Favor selecionar o mês!")
+        }
     };
 
 
-
-
     const renderItem = ({ item, index }: { item: Cliente, index: number }) => {
+
+        const diaFormatado = String(item['DiaCadastro']).padStart(2, '0');
+        const mesFormatado = String(item['MesCadastro']).padStart(2, '0');
+
+
         return (
             <TouchableOpacity
                 onPress={() => {
                     setModalVisible(true);
                     selecionarCliente(item)
                 }}
-                onLongPress={() => removerCliente(index)}
+
+                onLongPress={() => {
+                    Alert.alert(
+                        'Confirmar Exclusão',
+                        'Tem certeza que deseja excluir este cliente?',
+                        [
+                            {
+                                text: 'Cancelar',
+                                style: 'cancel',
+                            },
+                            {
+                                text: 'Excluir',
+                                onPress: () => {
+                                    removerCliente(item);
+                                    Alert.alert("", "Favor atualizar a lista!")
+                                },
+                            },
+
+                        ],
+                        { cancelable: true }
+                    );
+                }}
+
+
                 style={styles.clienteContainer}>
-                <View style={{ width: "60%" }}>
+                <View >
                     <View style={{ flexDirection: "row" }}>
-                        <Text style={{ width: "20%" }}>Nome:</Text><Text numberOfLines={1} ellipsizeMode="tail" style={styles.text}> {item.Nome} </Text>
+                        <Text>Nome:{' '}</Text><Text style={styles.text}> {item.Nome} </Text>
                     </View>
-
                     <View style={{ flexDirection: "row" }}>
-                        {/*  <Text style={{ width: "20%" }}>Carro: </Text>< Text style={styles.text}>{item.Modelo}</Text> */}
-                        <Text style={{ width: "20%" }}>Data: </Text>
-                        < Text style={styles.text}>{item['DiaCadastro']}/{item['MesCadastro']}/{item['AnoCadastro']}</Text>
+                        <Text>Carro:{' '}</Text>< Text style={styles.text}>{item.Modelo}</Text>
+                    </View>
+                    <View style={{ flexDirection: "row", justifyContent: "space-between", width: "100%" }}>
+                        <View style={{ flexDirection: "row" }}>
+                            <Text>Data da Cotação:{' '}</Text>
+                            <Text style={styles.text}>{diaFormatado}/{mesFormatado}/{item['AnoCadastro']} </Text>
+                        </View>
+                        <View style={{ flexDirection: "row", width: "50%" }}>
+                            <Text>Telefone:{' '}</Text><Text style={styles.text}>{item.Telefone}</Text>
+                        </View>
                     </View>
                 </View>
-
-                <View style={{ width: "100%" }} >
-                    <Text style={{ width: "35%", textAlign: "center" }}>Telefone:</Text><Text style={[styles.text, { textAlign: "center", width: "33%" }]}>{item.Telefone}</Text>
-                </View>
-
             </TouchableOpacity>
 
         );
@@ -109,10 +141,6 @@ export function Cotacoes() {
 
         <View style={styles.container}>
             <Text style={styles.title}>Cotações Salvas</Text>
-
-
-
-
             <View style={styles.dropContainer}>
                 <Text style={{ color: "#fff", fontSize: 20 }}>Selecione o mês</Text>
                 <View style={styles.picker}>
@@ -140,28 +168,25 @@ export function Cotacoes() {
                     </Picker>
                 </View>
             </View>
+            <TouchableOpacity
+                onPress={() => filtrarClientes()}
+                style={styles.buttonContainer}
+            >
+                <Text style={styles.buttonText}>Atualizar Clientes</Text>
+            </TouchableOpacity>
 
             <View style={styles.listContainer}>
-                <FlatList
+                {clientesFiltrados.length > 0 ? (<FlatList
                     data={clientesFiltrados}
                     renderItem={renderItem}
                     keyExtractor={(item, index) => index.toString()}
-                />
+                />) : <Text style={styles.textoVazio}>Nenhuma Cotação Salva</Text>}
 
             </View>
-
-            <TouchableOpacity
-                //onPress={() => alert(JSON.stringify(clientes))}
-                onPress={() => filtrarClientes()}
-
-                style={{ backgroundColor: "#fff" }}
-            >
-                <Text>Clientes Filtrados</Text>
-            </TouchableOpacity>
-
             <Modal
                 visible={modalVisible}
                 transparent={true}
+
                 animationType='slide'
             >
                 <ModalCliente

@@ -347,6 +347,7 @@ export function ModalSalvo({ handleClose }: ModalSalvoProps) {
                         <Text style={styles.textButton}>Conversar no WhatsApp</Text>
                     </TouchableOpacity>
 
+
                     <TouchableOpacity
                         style={styles.button}
                         onPress={() => handleClose()}>

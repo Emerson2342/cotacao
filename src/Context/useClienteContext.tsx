@@ -16,7 +16,8 @@ interface Cliente {
   'Cobertura Terceiros'?: string,
   DiaCadastro?: number,
   MesCadastro?: number,
-  AnoCadastro?: number
+  AnoCadastro?: number,
+
 }
 
 interface ClientesContextProps {
@@ -38,10 +39,10 @@ export const useClientesContext = () => {
   if (!context) {
     throw new Error("useClientesContext deve ser usado dentro de ClientesProvider");
   }
-  const removerCliente = (index: number) => {
+
+  const removerCliente = (cliente: Cliente) => {
     context.setClientes((prevClientes) => {
-      const novosClientes = [...prevClientes];
-      novosClientes.splice(index, 1);
+      const novosClientes = prevClientes.filter((c) => c !== cliente);
       return novosClientes;
     });
   };
