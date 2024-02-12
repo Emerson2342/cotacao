@@ -10,7 +10,6 @@ import { styles } from './HomeStyles';
 
 export default function Home() {
   const { clientes, setClientes } = useClientesContext();
-  //const [clientes, setClientes] = useState<Cliente[]>([]);
 
   const [modalSalvoVisible, setModalSalvoVisible] = useState(false);
   const [modalCheckVisible, setModalCheckVisible] = useState(false);
@@ -42,14 +41,14 @@ export default function Home() {
 
   const adicionarClientes = () => {
     if (novoCliente.Nome === '' ||
-      /* novoCliente.Telefone === '' ||
+      novoCliente.Telefone === '' ||
       novoCliente.Marca === '' ||
       novoCliente.Modelo === '' ||
       novoCliente['Ano modelo'] === '' ||
       novoCliente.Placa === '' ||
       novoCliente['Código FIPE'] === '' ||
       novoCliente['Valor Protegido'] === '' ||
-      novoCliente['Ajuda Participativa'] === '' || */
+      novoCliente['Ajuda Participativa'] === '' ||
       novoCliente['Cobertura Terceiros'] === ''
     ) {
       setModalCheckVisible(true)

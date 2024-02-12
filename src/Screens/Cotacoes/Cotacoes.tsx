@@ -101,7 +101,7 @@ export function Cotacoes() {
                                 text: 'Excluir',
                                 onPress: () => {
                                     removerCliente(item);
-                                    Alert.alert("", "Favor atualizar a lista!")
+                                    Alert.alert("", "Favor atualizar o período!")
                                 },
                             },
 
@@ -172,7 +172,7 @@ export function Cotacoes() {
                 onPress={() => filtrarClientes()}
                 style={styles.buttonContainer}
             >
-                <Text style={styles.buttonText}>Atualizar Clientes</Text>
+                <Text style={styles.buttonText}>Atualizar Período</Text>
             </TouchableOpacity>
 
             <View style={styles.listContainer}>
@@ -180,7 +180,7 @@ export function Cotacoes() {
                     data={clientesFiltrados}
                     renderItem={renderItem}
                     keyExtractor={(item, index) => index.toString()}
-                />) : <Text style={styles.textoVazio}>Nenhuma Cotação Salva</Text>}
+                />) : <Text style={styles.textoVazio}>Nenhuma Cotação Neste Período</Text>}
 
             </View>
             <Modal
