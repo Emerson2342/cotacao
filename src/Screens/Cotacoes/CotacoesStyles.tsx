@@ -11,8 +11,23 @@ export const styles = StyleSheet.create({
         padding: 15,
         color: "#cbc7cd"
     },
+    picker: {
+        height: 40,
+        alignSelf: "center",
+        width: "55%",
+        backgroundColor: "#fff",
+        borderRadius: 4,
+        justifyContent: "center",
+        marginBottom: 7
+    },
+    dropContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: "90%",
+        alignSelf: "center"
+    },
     listContainer: {
-        maxHeight: 600,
+        maxHeight: 500,
         width: "93%",
         alignSelf: "center"
     },

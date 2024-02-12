@@ -340,6 +340,8 @@ export function ModalCliente({ handleClose }: ModalClienteProps) {
                     <Text style={styles.text}>Cota Participativa: {clienteSelecionado['Ajuda Participativa']}</Text>
                     <Text style={styles.text}>Valor: R$ {clienteSelecionado['Valor Protegido']}</Text>
                     <Text style={styles.text}>Cobertura Terceiros de R$ {clienteSelecionado['Cobertura Terceiros']}</Text>
+                    <Text style={styles.text}>Data da Cotação:
+                        {clienteSelecionado['DiaCadastro']}/{clienteSelecionado['MesCadastro']}/2024</Text>
                 </View>
 
             </View>

@@ -24,8 +24,12 @@ export default function Home() {
 
   const [modalSalvoVisible, setModalSalvoVisible] = useState(false);
   const [modalCheckVisible, setModalCheckVisible] = useState(false);
-  /*   const [valor, setValor] = useState<string>('');
-    const [valueCota, setValueCota] = useState<string>(''); */
+
+
+
+  const dataAtual = new Date();
+  const diaAtual = dataAtual.getDate();
+  const mesAtual = dataAtual.getMonth() + 1;
 
   const [novoCliente, setNovoCliente] = useState({
     Nome: '',
@@ -39,19 +43,22 @@ export default function Home() {
     Vistoria: '',
     'Ajuda Participativa': '',
     'Valor Protegido': '',
-    'Cobertura Terceiros': ''
+    'Cobertura Terceiros': '',
+    DiaCadastro: diaAtual,
+    MesCadastro: mesAtual,
+    AnoCadastro: 2024
   });
 
   const adicionarClientes = () => {
     if (novoCliente.Nome === '' ||
-      novoCliente.Telefone === '' ||
+      /* novoCliente.Telefone === '' ||
       novoCliente.Marca === '' ||
       novoCliente.Modelo === '' ||
       novoCliente['Ano modelo'] === '' ||
       novoCliente.Placa === '' ||
       novoCliente['Código FIPE'] === '' ||
       novoCliente['Valor Protegido'] === '' ||
-      novoCliente['Ajuda Participativa'] === '' ||
+      novoCliente['Ajuda Participativa'] === '' || */
       novoCliente['Cobertura Terceiros'] === ''
     ) {
       setModalCheckVisible(true)
@@ -60,8 +67,10 @@ export default function Home() {
         ...prevClientes,
         { ...novoCliente },
       ]);
+
       // Limpar os campos de input após a adição
       setNovoCliente({
+
         Nome: '',
         Telefone: '',
         Marca: '',
@@ -73,7 +82,11 @@ export default function Home() {
         Vistoria: '',
         'Ajuda Participativa': '',
         'Valor Protegido': '',
-        'Cobertura Terceiros': ''
+        'Cobertura Terceiros': '',
+        DiaCadastro: diaAtual,
+        MesCadastro: mesAtual,
+        AnoCadastro: 2024
+
       });
       setModalSalvoVisible(true)
     }

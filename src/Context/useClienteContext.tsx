@@ -13,7 +13,10 @@ interface Cliente {
   Vistoria?: string,
   'Ajuda Participativa'?: string,
   'Valor Protegido'?: string,
-  'Cobertura Terceiros'?: string
+  'Cobertura Terceiros'?: string,
+  DiaCadastro?: number,
+  MesCadastro?: number,
+  AnoCadastro?: number
 }
 
 interface ClientesContextProps {
@@ -52,7 +55,112 @@ export const ClientesProvider: React.FC<ClientesProviderProps> = ({ children }) 
     setClienteSelecionado(cliente);
   };
 
-  const [clientes, setClientes] = useState<Cliente[]>([]);
+  const [clientes, setClientes] = useState<Cliente[]>([
+    {
+      Nome: 'Emerson Ribeiro',
+      Telefone: '9835-4398',
+      Marca: 'VW',
+      Modelo: 'Gol 1.0',
+      'Ano modelo': '2009',
+      Placa: 'JHP-0014',
+      'Código FIPE': '4815162342',
+      Parcela: '120,00',
+      Vistoria: '250,00',
+      'Ajuda Participativa': '5%',
+      'Valor Protegido': '15.000,00',
+      'Cobertura Terceiros': '150.000,00',
+      DiaCadastro: 10,
+      MesCadastro: 2,
+      AnoCadastro: 2024
+    },
+    {
+      Nome: 'Aurinete Maria',
+      Telefone: '9835-4398',
+      Marca: 'FIAT',
+      Modelo: 'Palio ELX 1.0',
+      'Ano modelo': '2002',
+      Placa: 'JGG-9080',
+      'Código FIPE': '4815162342',
+      Parcela: '120,00',
+      Vistoria: '250,00',
+      'Ajuda Participativa': '5%',
+      'Valor Protegido': '15.000,00',
+      'Cobertura Terceiros': '150.000,00',
+      DiaCadastro: 8,
+      MesCadastro: 1,
+      AnoCadastro: 2024
+    },
+    {
+      Nome: 'Jack Sheppard',
+      Telefone: '9835-4398',
+      Marca: 'FIAT',
+      Modelo: 'Weekend ELX 1.0',
+      'Ano modelo': '2000',
+      Placa: 'JGG-2340',
+      'Código FIPE': '4815162342',
+      Parcela: '110,00',
+      Vistoria: '150,00',
+      'Ajuda Participativa': '5%',
+      'Valor Protegido': '15.000,00',
+      'Cobertura Terceiros': '150.000,00',
+      DiaCadastro: 1,
+      MesCadastro: 2,
+      AnoCadastro: 2024
+    },
+    {
+      Nome: 'Will Turner',
+      Telefone: '9835-4398',
+      Marca: 'Sail',
+      Modelo: 'Black Pearl ELX 1.0',
+      'Ano modelo': '2000',
+      Placa: 'JGG-1234',
+      'Código FIPE': '4815162342',
+      Parcela: '190,00',
+      Vistoria: '350,00',
+      'Ajuda Participativa': '5%',
+      'Valor Protegido': '15.000,00',
+      'Cobertura Terceiros': '150.000,00',
+      DiaCadastro: 7,
+      MesCadastro: 2,
+      AnoCadastro: 2024
+    },
+    {
+      Nome: 'McGaiver',
+      Telefone: '9835-4398',
+      Marca: 'Sail',
+      Modelo: 'Black Pearl ELX 1.0',
+      'Ano modelo': '2000',
+      Placa: 'JGG-1234',
+      'Código FIPE': '4815162342',
+      Parcela: '190,00',
+      Vistoria: '350,00',
+      'Ajuda Participativa': '5%',
+      'Valor Protegido': '15.000,00',
+      'Cobertura Terceiros': '150.000,00',
+      DiaCadastro: 7,
+      MesCadastro: 1,
+      AnoCadastro: 2024
+    },
+    {
+      Nome: 'Torontotokyo',
+      Telefone: '9835-4398',
+      Marca: 'Sail',
+      Modelo: 'Black Pearl ELX 1.0',
+      'Ano modelo': '2000',
+      Placa: 'JGG-1234',
+      'Código FIPE': '4815162342',
+      Parcela: '190,00',
+      Vistoria: '350,00',
+      'Ajuda Participativa': '5%',
+      'Valor Protegido': '15.000,00',
+      'Cobertura Terceiros': '150.000,00',
+      DiaCadastro: 19,
+      MesCadastro: 1,
+      AnoCadastro: 2024
+    },
+
+
+  ]);
 
   const ultimoCliente = obterUltimoObjeto(clientes);
 
