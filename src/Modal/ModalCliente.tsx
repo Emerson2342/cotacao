@@ -256,15 +256,15 @@ export function ModalCliente({ handleClose }: ModalClienteProps) {
             <div class="finanContent">
                 <div style="width: 33%;white-space: nowrap;">
                     <p>VALOR PROTEGIDO</p>
-                    <p style="background-color: #43245c;color: #fff;">R$ 176,00</p>
+                    <p style="background-color: #43245c;color: #fff;">R$ ${clienteSelecionado?.['Valor Protegido']}</p>
                 </div>
                 <div style="width: 33%;white-space: nowrap;">
                     <p>VALOR MÉDIO MENSAL</p>
-                    <p style="background-color: #43245c;color: #fff;">R$ 176,00</p>
+                    <p style="background-color: #43245c;color: #fff;">R$ ${clienteSelecionado?.Parcela}</p>
                 </div>
                 <div style="width: 33%;white-space: nowrap;">
                     <p>ATIVAÇÃO DA PROTEÇÃO</p>
-                    <p style="background-color: #43245c;color: #fff;">R$350,00</p>
+                    <p style="background-color: #43245c;color: #fff;">R$ ${clienteSelecionado?.Vistoria}</p>
                 </div>
             </div>
         </div>
